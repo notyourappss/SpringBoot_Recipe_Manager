@@ -49,12 +49,12 @@
             <textarea name="instructions" placeholder="Instructions" class="form-control mb-2" required></textarea>
             <select name="category" class="form-control mb-3" required>
                 <option value="">Select Category</option>
-                <option value="Veg">Veg</option>
-                <option value="NonVeg">Non-Veg</option>
-                <option value="Deserts">Deserts</option>
-                <option value="South Indian">South Indian</option>
-                <option value="Italian">Italian</option>
-                <option value="Chinese">Chinese</option>
+                <option value="veg">Veg</option>
+                <option value="nonveg">Non-Veg</option>
+                <option value="deserts">Deserts</option>
+                <option value="south indian">South Indian</option>
+                <option value="italian">Italian</option>
+                <option value="chinese">Chinese</option>
             </select>
 
             <button type="submit" class="btn btn-danger">Add Recipe</button>

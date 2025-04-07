@@ -53,7 +53,7 @@
             <option value="">-- Select Category --</option>
             <option value="veg" ${recipe.category == 'veg' ? 'selected' : ''}>Veg</option>
             <option value="nonveg" ${recipe.category == 'nonveg' ? 'selected' : ''}>Non-Veg</option>
-            <option value="desserts" ${recipe.category == 'desserts' ? 'selected' : ''}>Desserts</option>
+            <option value="deserts" ${recipe.category == 'deserts' ? 'selected' : ''}>Deserts</option>
             <option value="south indian" ${recipe.category == 'south indian' ? 'selected' : ''}>South Indian</option>
             <option value="italian" ${recipe.category == 'italian' ? 'selected' : ''}>Italian</option>
             <option value="chinese" ${recipe.category == 'chinese' ? 'selected' : ''}>Chinese</option>

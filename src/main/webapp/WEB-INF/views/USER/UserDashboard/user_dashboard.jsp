@@ -33,11 +33,11 @@
     <a class="navbar-brand" href="#">RecipeManager</a>
     <div class="navbar-nav mr-auto">
         <a class="nav-link" href="/user/dashboard">Home</a>
-        <a class="nav-link" href="/user/favorites">Favourites</a>
+        <a class="nav-link" href="/user/favorites">Favorites</a>
         <a class="nav-link" href="/user/profile">Profile</a>
     </div>
     <form class="form-inline my-2 my-lg-0">
-        <a href="/logout" class="btn btn-danger">Logout</a>
+        <a href="/user/logout" class="btn btn-danger">Logout</a>
     </form>
 </nav>
 <jsp:include page="categories.jsp" />
