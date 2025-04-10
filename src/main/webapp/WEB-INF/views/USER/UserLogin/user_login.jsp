@@ -20,6 +20,7 @@
         <p class="text-center mt-3">Don't have an account? <a href="/user/register" class="text-info">Register here</a></p>
         <p class="text-danger">${error}</p>
     </form>
+    <a href="/" class="btn btn-secondary btn-block mt-3">Back to Role Selection</a>
 </div>
 </body>
 </html>

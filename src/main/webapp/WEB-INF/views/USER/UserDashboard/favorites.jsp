@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
     <title>Favourites</title>
@@ -49,8 +51,9 @@
                         <p><strong>Category:</strong> ${recipe.category}</p>
                         <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
                         <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-                        <form action="/user/removeFavorite/${recipe.id}" method="get">
-                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove</button>
+                        <form action="/user/removeFavorite/${recipe.id}" method="post" onsubmit="return confirm('Are you sure you want to remove this recipe from favorites?')">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove from Favorites</button>
                         </form>
                     </div>
                 </div>
