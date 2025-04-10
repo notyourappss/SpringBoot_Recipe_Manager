@@ -18,52 +18,82 @@
             background: #222;
             padding: 20px;
             height: 100vh;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .sidebar-menu {
+            flex-grow: 1;
         }
         .sidebar a {
             display: block;
             color: white;
-            padding: 10px;
+            padding: 12px 15px;
             text-decoration: none;
             border-radius: 5px;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
         }
         .sidebar a:hover, .sidebar a.active {
             background-color: #e91e63;
+            color: white;
+            transform: translateX(5px);
+        }
+        .sidebar a.logout {
+            background-color: #dc3545;
+            margin-top: auto;
+        }
+        .sidebar a.logout:hover {
+            background-color: #c82333;
         }
         .content {
             flex-grow: 1;
             padding: 20px;
+            margin-left: 250px;
+            overflow-y: auto;
         }
-        .card img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            float: right;
-            border-radius: 10px;
+        .card {
+            background-color: #1e1e1e;
+            color: #fff;
+            border: 1px solid #444;
+            margin-bottom: 20px;
         }
         .btn-container {
             margin-top: 10px;
         }
         .btn-container a {
-            display: block;
-            margin-bottom: 5px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .btn-warning, .btn-danger {
+            padding: 5px 15px;
         }
     </style>
 </head>
 <body>
 <div class="sidebar">
     <h2>Admin Panel</h2>
-    <a href="/admin/dashboard" class="active">Home</a>
-    <a href="/admin/add-recipe">Add Recipes</a>
-    <a href="/admin/manage-users">Manage Users</a>
-    <a href="/admin/settings">Settings</a>
+    <div class="sidebar-menu">
+        <a href="/admin/dashboard" class="active">Home</a>
+        <a href="/admin/add-recipe">Add Recipes</a>
+        <a href="/admin/manage-users">Manage Users</a>
+        <a href="/admin/settings">Settings</a>
+    </div>
+    <a href="/admin/logout" class="logout">Logout</a>
 </div>
 <div class="content">
     <h2>Recipe List</h2>
     <div class="row">
         <c:forEach items="${recipes}" var="recipe">
             <div class="col-md-6">
-                <div class="card p-3 bg-dark text-white mb-4">
+                <div class="card p-3">
                     <div class="card-body">
                         <h5 class="card-title">${recipe.name}</h5>
                         <p><strong>Category:</strong> ${recipe.category}</p>

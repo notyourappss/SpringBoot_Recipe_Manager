@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Settings</title>
+    <title>Admin Settings</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -16,27 +16,57 @@
             background: #222;
             padding: 20px;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar-menu {
+            flex-grow: 1;
         }
         .sidebar a {
             display: block;
             color: white;
-            padding: 10px;
+            padding: 12px 15px;
             text-decoration: none;
             border-radius: 5px;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
         }
         .sidebar a:hover, .sidebar a.active {
             background-color: #e91e63;
+            color: white;
+            transform: translateX(5px);
+        }
+        .sidebar a.logout {
+            background-color: #dc3545;
+            margin-top: auto;
+        }
+        .sidebar a.logout:hover {
+            background-color: #c82333;
         }
         .content {
             flex-grow: 1;
             padding: 20px;
         }
-        .form-group label {
+        .feedback-card {
+            background-color: #2d2d2d;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e91e63;
+        }
+        .feedback-user {
+            color: #e91e63;
             font-weight: bold;
         }
-        .logout-btn {
-            background-color: #e91e63;
+        .form-control {
+            background-color: #2d2d2d;
+            border: 1px solid #444;
+            color: white;
+        }
+        .form-control:focus {
+            background-color: #2d2d2d;
             color: white;
         }
     </style>
@@ -44,41 +74,51 @@
 <body>
 <div class="sidebar">
     <h2>Admin Panel</h2>
-    <a href="/admin/dashboard">Home</a>
-    <a href="/admin/add-recipe">Add Recipes</a>
-    <a href="/admin/manage-users">Manage Users</a>
-    <a href="/admin/settings" class="active">Settings</a>
+    <div class="sidebar-menu">
+        <a href="/admin/dashboard">Home</a>
+        <a href="/admin/add-recipe">Add Recipes</a>
+        <a href="/admin/manage-users">Manage Users</a>
+        <a href="/admin/settings" class="active">Settings</a>
+    </div>
+    <a href="/admin/logout" class="logout">Logout</a>
 </div>
 <div class="content">
-    <h2>Settings</h2>
-    <hr>
-
-    <h4>Change Your Details</h4>
-    <form method="post" action="/admin/update-details">
-        <input type="hidden" name="id" value="${admin.id}">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" name="username" class="form-control" value="${admin.username}">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-header">
+                    <h4>Update Admin Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/update-profile" method="post">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" value="${admin.username}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Leave blank to keep current password">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Update Profile</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" value="${admin.password}">
-        </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
 
-    <hr>
-    <h4>User Feedback</h4>
-    <c:forEach var="review" items="${reviews}">
-        <div class="card bg-dark text-white my-2 p-2">
-            <p><strong>${review.username}</strong>: ${review.message}</p>
+        <div class="col-md-6">
+            <h3>User Feedback</h3>
+            <c:forEach items="${feedbacks}" var="feedback">
+                <div class="feedback-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="feedback-user">${feedback.user.username}</div>
+                        <a href="/admin/delete-feedback/${feedback.id}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                    <div class="feedback-message">${feedback.message}</div>
+                    <small class="text-muted">${feedback.createdAt}</small>
+                </div>
+            </c:forEach>
         </div>
-    </c:forEach>
-
-    <hr>
-    <form action="/admin/logout" method="post">
-        <button class="btn logout-btn mt-3">Logout</button>
-    </form>
+    </div>
 </div>
 </body>
 </html>

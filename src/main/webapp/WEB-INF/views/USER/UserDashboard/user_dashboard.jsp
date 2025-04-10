@@ -25,6 +25,11 @@
             border: 1px solid #444;
             margin-bottom: 20px;
         }
+        .reviews-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
     </style>
 </head>
 <body>
@@ -40,7 +45,9 @@
         <a href="/user/logout" class="btn btn-danger">Logout</a>
     </form>
 </nav>
+
 <jsp:include page="categories.jsp" />
+
 <div class="container mt-4">
     <h3>
         <c:choose>
@@ -55,7 +62,7 @@
 
     <div class="row">
         <c:forEach items="${recipes}" var="recipe">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <div class="card-body">
                         <h5 class="card-title">${recipe.name}</h5>
@@ -63,12 +70,29 @@
                         <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
                         <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                         <form action="/user/addToFavorites/${recipe.id}" method="post">
-                            <button type="submit" class="btn btn-success btn-sm">Add to Favourites</button>
+                            <button type="submit" class="btn btn-success btn-sm">Add to Favorites</button>
                         </form>
                     </div>
                 </div>
             </div>
         </c:forEach>
+    </div>
+
+    <div class="reviews-section">
+        <h3>Recent Reviews</h3>
+        <div class="row">
+            <c:forEach items="${feedbacks}" var="feedback">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="card-title">${feedback.user.username}</h5>
+                            <p class="card-text">${feedback.message}</p>
+                            <small class="text-muted">${feedback.createdAt}</small>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </div>
 
