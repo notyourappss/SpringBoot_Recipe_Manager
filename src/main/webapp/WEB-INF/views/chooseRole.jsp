@@ -5,11 +5,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #121212;
-            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #1e1e1e, #2c3e50);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
             text-align: center;
-            padding-top: 100px;
-            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 40px;
         }
         .btn-custom {
             width: 200px;
@@ -21,8 +31,10 @@
     </style>
 </head>
 <body>
-    <h1>Select Role</h1>
-    <a href="/admin/login" class="btn btn-Danger btn-custom">Admin</a>
-    <a href="/user/login" class="btn btn-success btn-custom">User</a>
+    <div class="container">
+        <h1>Select Role</h1>
+        <a href="/admin/login" class="btn btn-Danger btn-custom">Admin</a>
+        <a href="/user/login" class="btn btn-success btn-custom">User</a>
+    </div>
 </body>
 </html>

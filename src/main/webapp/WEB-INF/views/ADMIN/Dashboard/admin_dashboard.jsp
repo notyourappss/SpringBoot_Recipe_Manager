@@ -4,23 +4,22 @@
 <head>
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/WEB-INF/views/common/styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             height: 100vh;
             margin: 0;
-            background-color: #000;
-            color: #fff;
         }
         .sidebar {
             width: 250px;
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             padding: 20px;
             height: 100vh;
             position: fixed;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
         }
         .sidebar h2 {
             color: white;
