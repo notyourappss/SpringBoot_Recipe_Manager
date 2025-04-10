@@ -28,19 +28,8 @@
     </form>
 </nav>
 
-<jsp:include page="categories.jsp" />
-
 <div class="container mt-4">
-    <h3>
-        <c:choose>
-            <c:when test="${not empty selectedCategory}">
-                Favourites - ${selectedCategory}
-            </c:when>
-            <c:otherwise>
-                All Favourites
-            </c:otherwise>
-        </c:choose>
-    </h3>
+    <h3>My Favorites</h3>
 
     <div class="row">
         <c:forEach items="${favorites}" var="recipe">

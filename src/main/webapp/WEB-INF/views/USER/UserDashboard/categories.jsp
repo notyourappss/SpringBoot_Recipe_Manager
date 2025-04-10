@@ -1,7 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+    .nav-tabs .nav-link.active {
+        color: #000 !important;
+    }
+</style>
 <div class="container mt-4">
     <ul class="nav nav-tabs justify-content-center">
-
         <li class="nav-item">
             <a class="nav-link ${selectedCategory == null ? 'active' : ''}" href="/user/dashboard">All</a>
         </li>
@@ -29,6 +33,5 @@
         <li class="nav-item">
             <a class="nav-link ${selectedCategory == 'chinese' ? 'active' : ''}" href="/user/category?type=chinese">Chinese</a>
         </li>
-
     </ul>
 </div>
