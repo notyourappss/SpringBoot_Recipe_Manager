@@ -14,6 +14,7 @@ public class Recipe {
     private String ingredients;
     private String instructions;
     private String category;
+    private String imagePath;  // Store the path to the image file
 
     public Long getId() {
         return id;
@@ -53,5 +54,13 @@ public class Recipe {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

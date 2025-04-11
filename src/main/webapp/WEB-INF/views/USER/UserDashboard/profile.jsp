@@ -36,6 +36,23 @@
             padding: 15px;
             margin-bottom: 15px;
         }
+        .btn-yellow {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+        .btn-yellow:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            color: #000;
+        }
+        .text-yellow {
+            color: #ffc107 !important;
+        }
+        .nav-link.active {
+            background-color: #ffc107 !important;
+            color: #000 !important;
+        }
     </style>
 </head>
 <body>
@@ -48,7 +65,7 @@
         <a class="nav-link active" href="/user/profile">Profile</a>
     </div>
     <form class="form-inline my-2 my-lg-0">
-        <a href="/user/logout" class="btn btn-danger">Logout</a>
+        <a href="/user/logout" class="btn btn-yellow">Logout</a>
     </form>
 </nav>
 
@@ -57,7 +74,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Update Profile</h4>
+                    <h4 class="text-yellow">Update Profile</h4>
                 </div>
                 <div class="card-body">
                     <form action="/user/update-profile" method="post">
@@ -69,7 +86,7 @@
                             <label>New Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Leave blank to keep current password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn btn-yellow">Update Profile</button>
                     </form>
                 </div>
             </div>
@@ -78,7 +95,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Send Feedback</h4>
+                    <h4 class="text-yellow">Send Feedback</h4>
                 </div>
                 <div class="card-body">
                     <form action="/user/send-feedback" method="post">
@@ -86,7 +103,7 @@
                             <label>Your Feedback</label>
                             <textarea class="form-control" name="feedback" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-success">Send Feedback</button>
+                        <button type="submit" class="btn btn-yellow">Send Feedback</button>
                     </form>
                 </div>
             </div>

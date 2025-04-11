@@ -18,9 +18,15 @@
         .navbar-brand, .nav-link, .btn {
             color: #fff !important;
         }
-        .btn-success {
-            background-color: #28a745;
-            border: none;
+        .btn-yellow {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+        .btn-yellow:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            color: black;
         }
         .card {
             background-color: #1e1e1e;
@@ -37,13 +43,17 @@
             background-color: #6c757d !important;
             cursor: default !important;
         }
+        .nav-link.active {
+            background-color: #ffc107 !important;
+            color: #000 !important;
+        }
     </style>
     <script>
         function checkFavoriteStatus(recipeId) {
             $.get("/user/isFavorited/" + recipeId, function(isFavorited) {
                 if (isFavorited) {
                     $("#fav-btn-" + recipeId)
-                        .removeClass("btn-success")
+                        .removeClass("btn-yellow")
                         .addClass("btn-added")
                         .prop("disabled", true)
                         .text("Added to Favorites");
@@ -57,7 +67,7 @@
                 "${_csrf.parameterName}": "${_csrf.token}"
             }, function() {
                 $("#fav-btn-" + recipeId)
-                    .removeClass("btn-success")
+                    .removeClass("btn-yellow")
                     .addClass("btn-added")
                     .prop("disabled", true)
                     .text("Added to Favorites");
@@ -70,7 +80,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="#">RecipeManager</a>
     <div class="navbar-nav mr-auto">
-        <a class="nav-link" href="/user/dashboard">Home</a>
+        <a class="nav-link active" href="/user/dashboard">Home</a>
         <a class="nav-link" href="/user/favorites">Favorites</a>
         <a class="nav-link" href="/user/profile">Profile</a>
     </div>
@@ -82,7 +92,7 @@
 <jsp:include page="categories.jsp" />
 
 <div class="container mt-4">
-    <h3>
+    <h3 class="text-yellow">
         <c:choose>
             <c:when test="${not empty selectedCategory}">
                 Recipes - ${selectedCategory}
@@ -104,7 +114,7 @@
                         <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                         <form action="/user/addToFavorites/${recipe.id}" method="post" onsubmit="handleFavorite(${recipe.id}, this)">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <button id="fav-btn-${recipe.id}" type="submit" class="btn btn-success btn-sm">
+                            <button id="fav-btn-${recipe.id}" type="submit" class="btn btn-yellow btn-sm">
                                 Add to Favorites
                             </button>
                         </form>
@@ -118,7 +128,7 @@
     </div>
 
     <div class="reviews-section">
-        <h3>Recent Reviews</h3>
+        <h3 class="text-yellow">Recent Reviews</h3>
         <div class="row">
             <c:forEach items="${feedbacks}" var="feedback">
                 <div class="col-md-6">

@@ -10,8 +10,21 @@
         body { background-color: #121212; color: #fff; }
         .navbar { background-color: #222; }
         .navbar-brand, .nav-link, .btn { color: #fff !important; }
-        .btn-success { background-color: #28a745; border: none; }
+        .btn-yellow {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+        .btn-yellow:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            color: #000;
+        }
         .card { background-color: #1e1e1e; color: #fff; border: 1px solid #444; margin-bottom: 20px; }
+        .nav-link.active {
+            background-color: #ffc107 !important;
+            color: #000 !important;
+        }
     </style>
 </head>
 <body>
@@ -20,7 +33,7 @@
     <a class="navbar-brand" href="#">RecipeManager</a>
     <div class="navbar-nav mr-auto">
         <a class="nav-link" href="/user/dashboard">Home</a>
-        <a class="nav-link" href="/user/favorites">Favorites</a>
+        <a class="nav-link active" href="/user/favorites">Favorites</a>
         <a class="nav-link" href="/user/profile">Profile</a>
     </div>
     <form class="form-inline my-2 my-lg-0">
@@ -42,7 +55,7 @@
                         <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                         <form action="/user/removeFavorite/${recipe.id}" method="post" onsubmit="return confirm('Are you sure you want to remove this recipe from favorites?')">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove from Favorites</button>
+                            <button type="submit" class="btn btn-yellow btn-sm mt-2">Remove from Favorites</button>
                         </form>
                     </div>
                 </div>

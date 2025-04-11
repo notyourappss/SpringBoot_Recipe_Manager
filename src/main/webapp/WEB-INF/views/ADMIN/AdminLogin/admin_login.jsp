@@ -8,15 +8,15 @@
             margin: 0;
             padding: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom right, #1e1e1e, #2c3e50);
+            background-color: #000;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
         .login-container {
-            background-color: white;
-            color: #333;
+            background-color: #333;
+            color: #fff;
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -24,12 +24,15 @@
             max-width: 400px;
         }
         .form-control {
-            border: 1px solid #ddd;
-            color: #333;
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
         }
         .form-control:focus {
+            background-color: #444;
             border-color: #e91e63;
             box-shadow: 0 0 0 0.2rem rgba(233, 30, 99, 0.25);
+            color: #fff;
         }
         .btn-danger {
             background-color: #e91e63;
@@ -40,7 +43,7 @@
             border-color: #c2185b;
         }
         label {
-            color: #333;
+            color: #fff;
             font-weight: 500;
         }
         .text-warning {
@@ -65,7 +68,7 @@
                 <input type="password" name="password" required class="form-control"/>
             </div>
             <button type="submit" class="btn btn-danger btn-block">Login</button>
-            <p class="text-center mt-3" style="color: #666;">Don't have an account? <a href="/admin/register" class="text-warning">Register here</a></p>
+            <p class="text-center mt-3" style="color: #ccc;">Don't have an account? <a href="/admin/register" class="text-warning">Register here</a></p>
             <p class="text-danger">${error}</p>
         </form>
         <a href="/" class="btn btn-secondary btn-block mt-3">Back to Role Selection</a>

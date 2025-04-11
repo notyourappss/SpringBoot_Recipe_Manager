@@ -10,6 +10,7 @@
             display: flex;
             height: 100vh;
             margin: 0;
+            background-color: #000;
         }
         .sidebar {
             width: 250px;
@@ -57,12 +58,20 @@
             padding: 20px;
             margin-left: 250px;
             overflow-y: auto;
+            background-color: #000;
+        }
+        .content h2{
+            color: white;
         }
         .card {
-            background-color: #1e1e1e;
+            background-color: #333;
             color: #fff;
             border: 1px solid #444;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
         }
         .btn-container {
             margin-top: 10px;

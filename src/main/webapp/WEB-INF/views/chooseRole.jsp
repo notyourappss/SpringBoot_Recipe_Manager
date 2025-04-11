@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom right, #1e1e1e, #2c3e50);
+            background-color: #000;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -28,13 +28,16 @@
             margin: 20px;
             border-radius: 10px;
         }
+        .btn-warning {
+            color: #fff !important;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Select Role</h1>
         <a href="/admin/login" class="btn btn-Danger btn-custom">Admin</a>
-        <a href="/user/login" class="btn btn-success btn-custom">User</a>
+        <a href="/user/login" class="btn btn-warning btn-custom">User</a>
     </div>
 </body>
 </html>

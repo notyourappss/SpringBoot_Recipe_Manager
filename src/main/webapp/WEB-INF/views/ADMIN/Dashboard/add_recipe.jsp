@@ -63,10 +63,11 @@
     </div>
     <div class="content">
         <h2>Add Recipe</h2>
-        <form action="/admin/add-recipe" method="post" enctype="multipart/form-data">
+        <form action="/admin/add-recipe" method="post">
             <input type="text" name="name" placeholder="Recipe Name" class="form-control mb-2" required>
             <textarea name="ingredients" placeholder="Ingredients" class="form-control mb-2" required></textarea>
             <textarea name="instructions" placeholder="Instructions" class="form-control mb-2" required></textarea>
+
             <select name="category" class="form-control mb-3" required>
                 <option value="">Select Category</option>
                 <option value="veg">Veg</option>

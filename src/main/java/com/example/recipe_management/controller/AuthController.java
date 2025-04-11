@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 public class AuthController {
@@ -49,41 +50,59 @@ public class AuthController {
 
     // Handle Admin registration
     @PostMapping("/admin/register")
-    public String registerAdmin(@ModelAttribute User user) {
-        user.setRole("ADMIN");
-        userService.register(user);
-        return "redirect:/admin/login";
+    public String registerAdmin(@ModelAttribute User user, Model model) {
+        try {
+            user.setRole("ADMIN");
+            userService.register(user);
+            return "redirect:/admin/login";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "ADMIN/AdminLogin/admin_register";
+        }
     }
 
     // Handle User registration
     @PostMapping("/user/register")
-    public String registerUser(@ModelAttribute User user) {
-        user.setRole("USER");
-        userService.register(user);
-        return "redirect:/user/login";
+    public String registerUser(@ModelAttribute User user, Model model) {
+        try {
+            user.setRole("USER");
+            userService.register(user);
+            return "redirect:/user/login";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "USER/UserLogin/user_register";
+        }
     }
 
     // Handle Admin login
     @PostMapping("/admin/login")
     public String loginAdmin(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
-        User user = userService.login(username, password);
-        if (user != null && "ADMIN".equals(user.getRole())) {
-            session.setAttribute("user", user);
-            return "redirect:/admin/dashboard";
+        try {
+            User user = userService.login(username, password);
+            if (user != null && "ADMIN".equals(user.getRole())) {
+                session.setAttribute("user", user);
+                return "redirect:/admin/dashboard";
+            }
+            model.addAttribute("error", "Invalid Credentials");
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
         }
-        model.addAttribute("error", "Invalid Credentials");
         return "ADMIN/AdminLogin/admin_login";
     }
 
     // Handle User login
     @PostMapping("/user/login")
     public String loginUser(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
-        User user = userService.login(username, password);
-        if (user != null && "USER".equals(user.getRole())) {
-            session.setAttribute("user", user);
-            return "redirect:/user/dashboard";
+        try {
+            User user = userService.login(username, password);
+            if (user != null && "USER".equals(user.getRole())) {
+                session.setAttribute("user", user);
+                return "redirect:/user/dashboard";
+            }
+            model.addAttribute("error", "Invalid Credentials");
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
         }
-        model.addAttribute("error", "Invalid Credentials");
         return "USER/UserLogin/user_login";
     }
 }
