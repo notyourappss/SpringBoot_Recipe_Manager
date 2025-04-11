@@ -7,9 +7,37 @@
     <title>Favourites</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body { background-color: #121212; color: #fff; }
-        .navbar { background-color: #222; }
-        .navbar-brand, .nav-link, .btn { color: #fff !important; }
+        body {
+            background-color: #121212;
+            background-image: url('https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        .navbar {
+            background-color: rgba(34, 34, 34, 0.9);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        .navbar-brand, .nav-link, .btn { color: #fff; }
         .btn-yellow {
             background-color: #ffc107;
             border-color: #ffc107;
@@ -22,8 +50,8 @@
         }
         .card { background-color: #1e1e1e; color: #fff; border: 1px solid #444; margin-bottom: 20px; }
         .nav-link.active {
-            background-color: #ffc107 !important;
-            color: #000 !important;
+            background-color: #ffc107;
+            color: #000;
         }
     </style>
 </head>

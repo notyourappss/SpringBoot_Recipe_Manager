@@ -10,10 +10,33 @@
     <style>
         body {
             background-color: #121212;
+            background-image: url('https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #fff;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
         }
         .navbar {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.9);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        .container {
+            position: relative;
+            z-index: 2;
         }
         .navbar-brand, .nav-link, .btn {
             color: #fff !important;
@@ -40,12 +63,23 @@
             border-top: 1px solid #444;
         }
         .btn-added {
-            background-color: #6c757d !important;
-            cursor: default !important;
+            background-color: #6c757d;
+            cursor: default;
         }
         .nav-link.active {
-            background-color: #ffc107 !important;
-            color: #000 !important;
+            background-color: #ffc107;
+            color: #000;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .username-display {
+            color: #ffc107;
+            font-weight: 500;
+            margin-right: 15px;
+            font-size: 1.1rem;
         }
     </style>
     <script>
@@ -84,9 +118,10 @@
         <a class="nav-link" href="/user/favorites">Favorites</a>
         <a class="nav-link" href="/user/profile">Profile</a>
     </div>
-    <form class="form-inline my-2 my-lg-0">
+    <div class="profile-section">
+        <span class="username-display">Welcome, ${user.username}</span>
         <a href="/user/logout" class="btn btn-danger">Logout</a>
-    </form>
+    </div>
 </nav>
 
 <jsp:include page="categories.jsp" />

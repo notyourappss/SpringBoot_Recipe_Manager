@@ -7,10 +7,33 @@
     <style>
         body {
             background-color: #121212;
+            background-image: url('https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #fff;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
         }
         .navbar {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.9);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        .container {
+            position: relative;
+            z-index: 2;
         }
         .navbar-brand, .nav-link, .btn {
             color: #fff !important;
@@ -47,11 +70,11 @@
             color: #000;
         }
         .text-yellow {
-            color: #ffc107 !important;
+            color: #ffc107;
         }
         .nav-link.active {
-            background-color: #ffc107 !important;
-            color: #000 !important;
+            background-color: #ffc107;
+            color: #000;
         }
     </style>
 </head>

@@ -4,6 +4,7 @@
 <head>
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/WEB-INF/views/common/styles.css">
     <style>
         body {
@@ -102,10 +103,46 @@
         .btn-warning, .btn-danger {
             padding: 5px 15px;
         }
+        .admin-profile {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e91e63;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 35px;
+            transition: all 0.3s ease;
+        }
+        .profile-icon:hover {
+            transform: scale(1.05);
+            background-color: #d81b60;
+        }
+        .admin-username {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 <div class="sidebar">
+    <div class="admin-profile">
+        <div class="profile-icon">
+            <i class="fas fa-user-shield"></i>
+        </div>
+
+    </div>
     <h2>Admin Panel</h2>
     <div class="sidebar-menu">
         <a href="/admin/dashboard" class="active">Home</a>
