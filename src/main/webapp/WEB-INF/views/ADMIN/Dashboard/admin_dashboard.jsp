@@ -11,6 +11,22 @@
             height: 100vh;
             margin: 0;
             background-color: #000;
+            background-image: url('https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
         }
         .sidebar {
             width: 250px;
@@ -21,6 +37,7 @@
             display: flex;
             flex-direction: column;
             backdrop-filter: blur(10px);
+            z-index: 2;
         }
         .sidebar h2 {
             color: white;
@@ -58,7 +75,9 @@
             padding: 20px;
             margin-left: 250px;
             overflow-y: auto;
-            background-color: #000;
+            background-color: transparent;
+            position: relative;
+            z-index: 2;
         }
         .content h2{
             color: white;

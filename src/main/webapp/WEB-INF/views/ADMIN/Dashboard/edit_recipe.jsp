@@ -9,13 +9,32 @@
             font-family: Arial, sans-serif;
             display: flex;
             background-color: #000;
+            background-image: url('https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: white;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
         }
         .sidebar {
             width: 250px;
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             padding: 20px;
             height: 100vh;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
         }
         .sidebar a {
             display: block;
@@ -31,6 +50,8 @@
         .content {
             flex-grow: 1;
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
