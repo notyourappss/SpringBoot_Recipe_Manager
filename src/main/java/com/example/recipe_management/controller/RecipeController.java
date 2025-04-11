@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,29 +29,8 @@ public class RecipeController {
         return "ADMIN/Dashboard/add_recipe";
     }
 
-//    @PostMapping("/add-recipe")
-//    public String addRecipe(@ModelAttribute Recipe recipe) {
-//        recipeService.saveRecipe(recipe);
-//        return "redirect:/admin/dashboard";
-//    }
-
     @PostMapping("/add-recipe")
-    public String addRecipe(@ModelAttribute Recipe recipe,
-                            @RequestParam("image") MultipartFile imageFile) {
-        try {
-            if (!imageFile.isEmpty()) {
-                String fileName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename();
-                String uploadDir = "src/main/resources/static/uploads/";
-                java.nio.file.Path path = java.nio.file.Paths.get(uploadDir + fileName);
-                java.nio.file.Files.createDirectories(path.getParent());
-                imageFile.transferTo(path.toFile());
-
-                recipe.setImagePath("/uploads/" + fileName); // For JSP use
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public String addRecipe(@ModelAttribute Recipe recipe) {
         recipeService.saveRecipe(recipe);
         return "redirect:/admin/dashboard";
     }
