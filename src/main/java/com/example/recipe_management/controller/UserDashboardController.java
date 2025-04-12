@@ -96,9 +96,4 @@ public class UserDashboardController {
         session.invalidate();
         return "redirect:/";
     }
-
-    @GetMapping("/")
-    public String chooseRolePage() {
-        return "chooseRole";
-    }
 }
